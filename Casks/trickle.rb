@@ -10,12 +10,12 @@ cask "trickle" do
   desc "Menu bar power monitor for battery health, power flow and charging"
   homepage "https://github.com/swsususu/Trickle"
 
-  # No depends_on macos: the floor was never tested, and asserting one broke
+  # Declares the platform without asserting a version floor. Pinning one broke
   # installs on macOS 26 with "does not run on macOS versions other than
-  # Ventura" — older Homebrew releases mis-handle the comparison when their
-  # version table predates the running system. The app itself fails clearly
-  # enough if the OS is too old, so a guessed constraint costs more than it
-  # protects.
+  # Ventura": older Homebrew releases mis-handle the comparison when their
+  # version table predates the running system. The floor was a guess anyway, as
+  # Trickle has only been run on macOS 26 and 27.
+  depends_on macos: :any
 
   app "Trickle.app"
 
